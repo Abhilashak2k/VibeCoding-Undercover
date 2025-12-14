@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classy Multiplayer Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header / Logo -->
+        <header>
+            <h1>Velvet <span class="accent">Lounge</span></h1>
+        </header>
+
+        <!-- Landing Screen -->
+        <div id="landing-screen" class="screen active">
+            <p class="subtitle">A gathering of minds.</p>
+            <div class="button-group">
+                <button id="btn-show-create" class="btn primary">Create Room</button>
+                <button id="btn-show-join" class="btn secondary">Join Room</button>
+            </div>
+        </div>
+
+        <!-- Create Room Screen -->
+        <div id="create-room-screen" class="screen hidden">
+            <h2>Host a Soiree</h2>
+            <div class="form-group">
+                <input type="text" id="create-username" placeholder="Your Pseudonym" maxlength="15">
+            </div>
+            <div class="form-group">
+                <label for="max-players">Guest List Size</label>
+                <input type="number" id="max-players" value="4" min="2" max="10">
+            </div>
+            <div class="button-group">
+                <button id="btn-create-submit" class="btn primary">Create</button>
+                <button class="btn text-only btn-back">Back</button>
+            </div>
+        </div>
+
+        <!-- Join Room Screen -->
+        <div id="join-room-screen" class="screen hidden">
+            <h2>Enter the Lounge</h2>
+            <div class="form-group">
+                <input type="text" id="join-username" placeholder="Your Pseudonym" maxlength="15">
+            </div>
+            <div class="form-group">
+                <input type="text" id="join-room-code" placeholder="6-Digit Entry Code" maxlength="6">
+            </div>
+            <div class="button-group">
+                <button id="btn-join-submit" class="btn primary">Join</button>
+                <button class="btn text-only btn-back">Back</button>
+            </div>
+        </div>
+
+        <!-- Lobby Screen -->
+        <div id="lobby-screen" class="screen hidden">
+            <div class="room-info">
+                <p>Entry Code</p>
+                <h2 id="room-code-display">------</h2>
+            </div>
+            
+            <div class="players-list-container">
+                <h3>Guests Present (<span id="player-count">1</span>/<span id="max-count">4</span>)</h3>
+                <ul id="players-list">
+                    <!-- Players will be injected here -->
+                </ul>
+            </div>
+            
+            <p class="status-text">Waiting for others to arrive...</p>
+        </div>
+
+        <!-- Notification Area -->
+        <div id="notification-area" class="hidden"></div>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
